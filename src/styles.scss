@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .active > .nav-link{
+  color: #FFF !important;
+}
+.navbar-light .navbar-nav .nav-link{
+  color:rgba(255,255,255,.5);
+}

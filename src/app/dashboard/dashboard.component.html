@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>All Books</h1>
+      <table class="table">
+        <tbody>
+          <tr *ngFor='let book of allBooks'>
+            <td>{{book.title}}</td>
+            <td><a [routerLink]="['/editbook', book.bookID]">Edit</a></td>
+            <td><a (click)="deleteBook(book.bookID)">Delete</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <h1>All Readers</h1>
+      <table class="table">
+        <tbody>
+          <tr *ngFor='let reader of allReaders'>
+            <td>{{reader.name}}</td>
+            <td><a [routerLink]="['/editreader', reader.readerID]">Edit</a></td>
+            <td><a (click)="deleteReader(reader.readerID)">Delete</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <h1>Most Popular Book</h1>
+      <p>{{mostPopularBook.title}} by {{mostPopularBook.author}}</p>
+    </div>
+  </div>
+</div>

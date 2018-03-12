@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form>
+        <fieldset>
+          <legend>Edit Reader</legend>
+          <div class="form-group">
+            <label for="inputGoal">Name</label>
+            <input type="text" class="form-control" id="inputGoal" name="name"  placeholder="Name" [(ngModel)]="selectedReader && selectedReader.name">
+          </div>
+          <div class="form-group">
+            <label for="inputGoal">Weekly Goal</label>
+            <input type="text" class="form-control" id="inputGoal" name="weeklyReadingGoal"  placeholder="Weekly Goal" [(ngModel)]="selectedReader && selectedReader.weeklyReadingGoal">
+          </div>
+          <div class="form-group">
+            <label for="inputTotal">Total Read</label>
+            <input type="text" class="form-control" id="inputTotal" name="totalMinutesRead"  placeholder="Total Minutes Read" [(ngModel)]="selectedReader && selectedReader.totalMinutesRead">
+          </div>
+          <div class="form-group">
+            <label for="inputTotal">Current Badge</label>
+            <div>{{currentBadge}}</div>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="saveChanges()">Save</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
