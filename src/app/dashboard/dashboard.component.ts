@@ -6,6 +6,7 @@ import { Book } from '../models/book';
 import { Reader } from '../models/reader';
 import { DataService } from '../core/data.service';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -20,14 +21,29 @@ export class DashboardComponent implements OnInit {
   constructor(private dataService: DataService, private title: Title) { }
 
   ngOnInit() {
-    this.allBooks = this.dataService.getAllBooks();
-    this.allReaders = this.dataService.getAllReaders();
+    this.dataService.getAllBooks().subscribe(
+      (data: Book[]) => this.allBooks = data,
+      (err: any) => console.log(err),
+      () => console.log('Done getting all books!!!')
+    );
+    this.dataService.getAllReaders().subscribe(
+      (data: Reader[]) => this.allReaders = data,
+      (err: any) => console.log(err),
+      () => console.log('Done getting all readers!!!')
+    );
     this.mostPopularBook = this.dataService.mostPopularBook;
     this.title.setTitle(`Angular HTTP Communication ${VERSION.full}`);
   }
 
   deleteBook(bookID: number): void{
-    console.warn(`Delete book not yet implemented (bookID: ${bookID}).`);
+    this.dataService.deleteBook(bookID)
+      .subscribe(
+        (data: void) => {
+          let index: number = this.allBooks.findIndex(book => book.bookID === bookID);
+          this.allBooks.splice(index, 1);
+        },
+        (err: any) => console.log(err)
+      );
   }
 
   deleteReader(readerID: number): void{
