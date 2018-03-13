@@ -5,6 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { Book } from '../models/book';
 import { Reader } from '../models/reader';
 import { DataService } from '../core/data.service';
+import { BookTrackerError } from '../models/book-tracker-error';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.dataService.getAllBooks().subscribe(
       (data: Book[]) => this.allBooks = data,
-      (err: any) => console.log(err),
+      (err: BookTrackerError) => console.log(err.friendlyMessage),
       () => console.log('Done getting all books!!!')
     );
     this.dataService.getAllReaders().subscribe(
