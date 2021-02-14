@@ -70,7 +70,7 @@
             "scripts": [],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "assets": ["src/assets", "src/favicon.ico"]
           }
